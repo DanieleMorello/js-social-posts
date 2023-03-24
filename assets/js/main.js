@@ -56,14 +56,4 @@ const posts = [
     }
 ];
 
-// Seleziona gli elementi del Dom
-const contentElement = document.querySelector('.post__text')
-const mediaElement = document.querySelector('.post__image')
-const authorElement = document.querySelector('.post-meta__author')
-const likesElement = document.querySelector('.js-likes-counter')
-const createdElement = document.querySelector('.post-meta__time')
 
-// Cicla gli elementi
-
-
-// Stampa
