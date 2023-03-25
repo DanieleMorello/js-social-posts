@@ -65,52 +65,44 @@ const posts = [
 const postsListElement = document.querySelector(".posts-list");
 
 posts.forEach((post) => {
-    generateHeaderMarkup(post)
-  
-    generateFooterMarkup(post)
+  generateMarkup(post);
 });
 
-function generateHeaderMarkup(post) {
-    const divELement = document.createElement("div");
+// Funzioni
+function generateMarkup(post) {
+  const divELement = document.createElement("div");
   divELement.classList.add("post");
-  const headerMarkup = `
-<div class="post__header">
-    <div class="post-meta">                    
-        <div class="post-meta__icon">
-            <img class="profile-pic" src="${post.author.image}" alt="Phil Mangione">                    
-        </div>
-        <div class="post-meta__data">
-            <div class="post-meta__author">${post.author.name}</div>
-            <div class="post-meta__time">${post.created}</div>
-        </div>                    
-    </div>
-</div>
-<div class="post__text">${post.content}</div>
-            <div class="post__image">
-                <img src="${post.media}" alt="">
-            </div>`;
-            divELement.innerHTML = headerMarkup;
-            postsListElement.appendChild(divELement);
-            return headerMarkup 
-}
-
-function generateFooterMarkup(post) {
-    const postFooterElement = document.createElement("div");
-    postFooterElement.classList.add("post__footer");
-  const footerMarkup = `
-<div class="likes js-likes">
-<div class="likes__cta">
-    <a class="like-button  js-like-button" href="#" data-postid="1">
-        <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-        <span class="like-button__label">Mi Piace</span>
-    </a>
-</div>
-<div class="likes__counter">
-    Piace a <b id="like-counter-${post.id}" class="js-likes-counter">${post.likes}</b> persone
-</div>
-</div> 
-`;
-postFooterElement.insertAdjacentHTML("beforeend", footerMarkup);
-postsListElement.appendChild(postFooterElement);
-return footerMarkup
+  const Markup = `
+  <div class="post__header">
+      <div class="post-meta">                    
+          <div class="post-meta__icon">
+              <img class="profile-pic" src="${post.author.image}" alt="${post.author.name}">                    
+          </div>
+          <div class="post-meta__data">
+              <div class="post-meta__author">${post.author.name}</div>
+              <div class="post-meta__time">${post.created}</div>
+          </div>                    
+      </div>
+  
+  <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.</div>
+  <div class="post__image">
+      <img src="${post.media}" alt="">
+  </div>
+  <div class="post__footer">
+      <div class="likes js-likes">
+          <div class="likes__cta">
+              <a class="like-button  js-like-button" href="#" data-postid="1">
+                  <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                  <span class="like-button__label">Mi Piace</span>
+              </a>
+          </div>
+          <div class="likes__counter">
+              Piace a <b id="${post.id}" class="js-likes-counter">${post.likes}</b> persone
+          </div>
+      </div> 
+  </div>            
+</div>`;
+  divELement.innerHTML = Markup;
+  postsListElement.appendChild(divELement);
+  return Markup;
 }
